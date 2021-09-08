@@ -9,10 +9,12 @@ comming soon
 
 ## Requirements and Installation
 * Python version == 3.6
-* [PyTorch](http://pytorch.org/) version == 1.6.0
-* sacremoses == 
-* sacrebleu == 
-* **To install fairseq**:
+* [PyTorch](http://pytorch.org/) version == 1.5.0
+* numpy == 1.19.5
+* sacremoses == 0.0.43
+* sacrebleu == 1.5.1
+* jieba == 0.42.1
+* **To install revised fairseq 0.10.1**:
 ```
 git clone https://github.com/Victorwz/zs-nmt-dae.git;
 cd zs-nmt-dae;
@@ -38,3 +40,15 @@ bash prepare-multiun.sh
 ```
 
 ## Binalizing and Training with FairSeq
+
+
+## Decoding and Testing
+For the decoding and testing on MultiUN, you need to first train the transformer model from scratch to get your checkpoint. Or you can use our checkpoint for reproducing the reported results in our paper.
+The checkpoint, dictionary, and BPE code are available at [Google Drive](). You can download it and unzip to ./checkpoints. You need to modify the model and dictionary path in testing script to run the script.
+
+For testing, please run the following shell scripts:
+```
+bash test_multiun_mnmt_dn.sh
+```
+
+We also find that deploying the trick of averaging the last 5 checkpoints starting from checkpoint_valid_bleu_best may lead to a better performance. You can uncomment some part of the code in our scripts to test the functionality of this trick. However, we did not deploy this trick in our method and all baseline methods in our paper.
