@@ -14,17 +14,27 @@ comming soon
 * sacrebleu == 
 * **To install fairseq**:
 ```
-git clone https://github.com/pytorch/fairseq;
-cd fairseq;
+git clone https://github.com/Victorwz/zs-nmt-dae.git;
+cd zs-nmt-dae;
 pip install --editable ./;
 ```
 
 ## Data Downloading
-We conduct experiments on two multilingual corpus [MultiUN](https://conferences.unite.un.org/uncorpus) and [Europarl]
+We conduct experiments on two multilingual corpus [MultiUN](https://conferences.unite.un.org/uncorpus) and [Europarl](http://www.statmt.org/europarl/).
 
-For downloading MultiUN, please refer to its [official website and scripts](https://conferences.unite.un.org/UNCORPUS/en/DownloadOverview). The downloaded corpus should be put in the folder ./data/MultiUN.
+For downloading MultiUN, please refer to its [official website and scripts](https://conferences.unite.un.org/UNCORPUS/en/DownloadOverview). The downloaded corpus should be put in the folder ./data/MultiUN. Or you can use our script to download the corpus:
+```
+cd data;
+bash download-multiun.sh
+```
 
+For downloading Europarl, please refer to its [official website and scripts](http://www.statmt.org/europarl/). The official validation and test sets are [WMT devtest2006 and testset2006](http://matrix.statmt.org/test_sets/list). The downloading script might be too complicated and we highly suggest that you could download manually.
 
+## Data Preprocessing
+For preprocess MultiUN, please run the following shell scripts:
+```
+cd data;
+bash prepare-multiun.sh
+```
 
-## Data Pre-processing
-The scripts for data pre-processing is available at 
+## Binalizing and Training with FairSeq
