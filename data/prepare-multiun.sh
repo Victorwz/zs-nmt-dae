@@ -4,7 +4,7 @@ git clone https://github.com/moses-smt/mosesdecoder.git
 echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
 git clone https://github.com/rsennrich/subword-nmt.git
 
-srcpath=MultiUN
+srcpath=../../../knnmt/examples/translation/MultiUN
 prep=MultiUN-raw-data-2M/mnmt-dn
 tmp=$prep/tmp
 
@@ -39,8 +39,7 @@ BPEROOT=subword-nmt/subword_nmt
 BPE_TOKENS=40000
 
 echo "pre-processing train data..."
-# for SRC in "${SRCS[@]}"; do
-for SRC in $SRCS; do
+for SRC in "${SRCS[@]}"; do
     echo $SRC
     array=(${SRC//-/ })
     src=${array[0]}
@@ -76,8 +75,8 @@ TRAIN=$prep/train.mnmt
 BPE_CODE=$prep/code
 rm $TRAIN
 
-cat $prep/multiun.tokenized.* >> $TRAIN
-cat $prep/multiun.denoising.* | shuf -n 2000000 >> $TRAIN
+cat $tmp/multiun.tokenized.* >> $TRAIN
+cat $tmp/multiun.denoising.* | shuf -n 2000000 >> $TRAIN
 
 echo "learn_bpe.py on ${TRAIN}..."
 python $BPEROOT/learn_bpe.py -s $BPE_TOKENS < $TRAIN > $BPE_CODE
@@ -91,7 +90,7 @@ for l in ar zh ru; do
     cat $tmp/multiun.bpe.tokenized.${l}-en.en >> $prep/train.tgt
     awk '{print "<2'$l'> "$0}' $tmp/multiun.bpe.tokenized.${l}-en.en >> $prep/train.src
     cat $tmp/multiun.bpe.tokenized.${l}-en.${l} >> $prep/train.tgt
-    awk '{print "<2en> "$0}' $tmp/multiun.bpe.noisy.${l}-en.en >> $prep/train.src
+    awk '{print "<2en> "$0}' $tmp/multiun.bpe.denoising.${l}-en.en >> $prep/train.src
     cat $tmp/multiun.bpe.tokenized.${l}-en.en >> $prep/train.tgt
 done
 
