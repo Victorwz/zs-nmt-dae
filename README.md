@@ -14,6 +14,7 @@ comming soon
 * sacremoses == 0.0.43
 * sacrebleu == 1.5.1
 * jieba == 0.42.1
+* tqdm == 4.59.0
 * **To install revised fairseq 0.10.1**:
 ```
 git clone https://github.com/Victorwz/zs-nmt-dae.git;
@@ -30,7 +31,7 @@ cd data;
 bash download-multiun.sh
 ```
 
-For downloading Europarl, please refer to its [official website and scripts](http://www.statmt.org/europarl/). The official validation and test sets are [WMT devtest2006 and testset2006](http://matrix.statmt.org/test_sets/list). The downloading script might be too complicated and we highly suggest that you could download manually.
+For downloading Europarl, please refer to its [official website and scripts](http://www.statmt.org/europarl/). The official validation and test sets of Europarl are [WMT devtest2006 and testset2006](http://matrix.statmt.org/test_sets/list). The downloading script might be too complicated and we highly suggest that you could download manually.
 
 ## Data Preprocessing
 For preprocess MultiUN corpus, please run the following shell scripts:

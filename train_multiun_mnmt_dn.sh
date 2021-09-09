@@ -1,5 +1,5 @@
 fairseq-preprocess --source-lang src --target-lang tgt \
-    --trainpref data/MultiUN-raw-data-2M/mnmt-dn/train \
+    --trainpref data/MultiUN-raw-data-2M/mnmt-dn/train.clean \
     --validpref data/MultiUN-raw-data-2M/mnmt-dn/valid \
     --destdir data-bin/multiun_mnmt_denoising/ \
     --workers 20 --joined-dictionary

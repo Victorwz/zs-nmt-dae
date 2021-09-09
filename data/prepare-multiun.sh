@@ -4,7 +4,7 @@ git clone https://github.com/moses-smt/mosesdecoder.git
 echo 'Cloning Subword NMT repository (for BPE pre-processing)...'
 git clone https://github.com/rsennrich/subword-nmt.git
 
-srcpath=../../../knnmt/examples/translation/MultiUN
+srcpath=MultiUN
 prep=MultiUN-raw-data-2M/mnmt-dn
 tmp=$prep/tmp
 
