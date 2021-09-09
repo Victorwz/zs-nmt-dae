@@ -3,7 +3,7 @@ TEXT=data/MultiUN-raw-data-2M
 # Please download our checkpoint, dictionary to reprocude the results in our paper
 MODEL=multiun_mnmt_denoising
 MODEL_PATH=checkpoints/multiun_mnmt_denoising/checkpoint_best.pt
-DICT=data-bin/multiun_mnmt_denoising/dict.src.txt
+DICT=checkpoints/multiun_mnmt_denoising/dict.src.txt
 
 LC=data/mosesdecoder/scripts/tokenizer/lowercase.perl
 DETOK=data/mosesdecoder/scripts/tokenizer/detokenizer.perl

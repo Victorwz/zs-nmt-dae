@@ -47,7 +47,7 @@ bash train_multiun_mnmt_dn.sh
 
 ## Decoding and Testing
 For the decoding and testing on MultiUN, you need to first train the transformer model from scratch to get your checkpoint. Or you can use our checkpoint for reproducing the reported results in our paper.
-The checkpoint, dictionary, and BPE code are available at [Google Drive](). You can download it and unzip to ./checkpoints. You need to modify the model and dictionary path in testing script to run the script.
+The checkpoint, dictionary, and BPE code are available at [Google Drive](https://drive.google.com/file/d/1HtJ01SRm69rtN6JyZkspilamfO3YjIeD/view?usp=sharing). You can download it and unzip to ./checkpoints/multiun_mnmt_denoising. You need to modify the model and dictionary path in testing script to run the script.
 
 For testing, please run the following shell scripts:
 ```
