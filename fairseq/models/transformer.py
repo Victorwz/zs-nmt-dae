@@ -27,6 +27,7 @@ from fairseq.modules import (
     TransformerDecoderLayer,
     TransformerEncoderLayer,
 )
+from fairseq.modules.transformer_layer import TransformerEncoderLayer_NoneResidual
 from fairseq.modules.quant_noise import quant_noise as apply_quant_noise_
 from torch import Tensor
 
@@ -351,9 +352,22 @@ class TransformerEncoder(FairseqEncoder):
             self.layers = LayerDropModuleList(p=self.encoder_layerdrop)
         else:
             self.layers = nn.ModuleList([])
-        self.layers.extend(
-            [self.build_encoder_layer(args) for i in range(args.encoder_layers)]
-        )
+
+        print("Whether to remove intermediate residual connection:", args.remove_inter_residual)
+
+        if args.remove_inter_residual:
+            self.layers.extend(
+                [self.build_encoder_layer(args) for i in range(int(args.encoder_layers/2))]
+            )
+            self.layers.extend([TransformerEncoderLayer_NoneResidual(args)])
+            self.layers.extend(
+                [self.build_encoder_layer(args) for i in range(int(args.encoder_layers/2)-1)]
+            )
+        else:
+            self.layers.extend(
+                [self.build_encoder_layer(args) for i in range(args.encoder_layers)]
+            )
+
         self.num_layers = len(self.layers)
 
         if args.encoder_normalize_before:
@@ -962,6 +976,9 @@ def base_architecture(args):
     args.no_scale_embedding = getattr(args, "no_scale_embedding", False)
     args.layernorm_embedding = getattr(args, "layernorm_embedding", False)
     args.tie_adaptive_weights = getattr(args, "tie_adaptive_weights", False)
+
+    #self-defined arguments
+    args.remove_inter_residual = getattr(args, "remove_inter_residual", False)
 
 
 @register_model_architecture("transformer", "transformer_iwslt_de_en")

@@ -23,5 +23,5 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 fairseq-train \
     --eval-bleu-remove-bpe \
     --scoring sacrebleu \
     --best-checkpoint-metric bleu --maximize-best-checkpoint-metric \
-    --max-update 300000 --save-interval-updates 10000  \
+    --max-update 500000 --save-interval-updates 10000  \
     --save-dir checkpoints/multiun_mnmt_denoising/
