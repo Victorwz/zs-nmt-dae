@@ -33,14 +33,17 @@ bash download-multiun.sh
 For downloading Europarl, please refer to its [official website and scripts](http://www.statmt.org/europarl/). The official validation and test sets are [WMT devtest2006 and testset2006](http://matrix.statmt.org/test_sets/list). The downloading script might be too complicated and we highly suggest that you could download manually.
 
 ## Data Preprocessing
-For preprocess MultiUN, please run the following shell scripts:
+For preprocess MultiUN corpus, please run the following shell scripts:
 ```
 cd data;
 bash prepare-multiun.sh
 ```
 
 ## Binalizing and Training with FairSeq
-
+For training multilingual NMT model with denoising autoencoder objective on MultiUN, please run the following shell scripts:
+```
+bash train_multiun_mnmt_dn.sh
+```
 
 ## Decoding and Testing
 For the decoding and testing on MultiUN, you need to first train the transformer model from scratch to get your checkpoint. Or you can use our checkpoint for reproducing the reported results in our paper.
@@ -52,3 +55,6 @@ bash test_multiun_mnmt_dn.sh
 ```
 
 We also find that deploying the trick of averaging the last 5 checkpoints starting from checkpoint_valid_bleu_best may lead to a better performance. You can uncomment some part of the code in our scripts to test the functionality of this trick. However, we did not deploy this trick in our method and all baseline methods in our paper.
+
+## Credit
+Our project is developed based on [FairSeq](https://github.com/pytorch/fairseq) toolkit.
