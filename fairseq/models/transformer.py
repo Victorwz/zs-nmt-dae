@@ -242,13 +242,21 @@ class TransformerModel(FairseqEncoderDecoderModel):
 
     @classmethod
     def build_decoder(cls, args, tgt_dict, embed_tokens):
-        return TransformerDecoder(
+        decoder = TransformerDecoder(
             args,
             tgt_dict,
             embed_tokens,
             no_encoder_attn=getattr(args, "no_cross_attention", False),
         )
+        
+        if getattr(args, 'restore_decoder', None) is not None:
+            from fairseq.checkpoint_utils import load_pretrained_component_from_model
+            decoder = load_pretrained_component_from_model(
+                    component=decoder, checkpoint=args.restore_decoder
+                )
+            print("The decoder is loaded from {}".format(args.restore_decoder))
 
+        return decoder
     # TorchScript doesn't support optional arguments with variable length (**kwargs).
     # Current workaround is to add union of all arguments in child classes.
     def forward(
