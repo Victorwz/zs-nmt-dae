@@ -4,7 +4,12 @@ Official implementation of EMNLP 2021 Paper "Rethinking Zero-shot Neural Machine
 ## Citation
 Please cite our paper if you find this repository helpful in your research:
 ```
-comming soon
+@article{wang2021rethinking,
+  title={Rethinking Zero-shot Neural Machine Translation: From a Perspective of Latent Variables},
+  author={Wang, Weizhi and Zhang, Zhirui and Du, Yichao and Chen, Boxing and Xie, Jun and Luo, Weihua},
+  journal={arXiv preprint arXiv:2109.04705},
+  year={2021}
+}
 ```
 
 ## Requirements and Installation
