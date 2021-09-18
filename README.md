@@ -1,5 +1,5 @@
 # zs-nmt-dae
-Official implementation of EMNLP 2021 Paper "Rethinking Zero-shot Neural Machine Translation: From a Perspective of Latent Variables". 
+Official implementation of EMNLP 2021 Paper "[Rethinking Zero-shot Neural Machine Translation: From a Perspective of Latent Variables](https://arxiv.org/abs/2109.04705)". 
 
 ## Citation
 Please cite our paper if you find this repository helpful in your research:
