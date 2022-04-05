@@ -37,19 +37,30 @@ cd data;
 bash download-multiun.sh
 ```
 
-For downloading Europarl, please refer to its [official website and scripts](http://www.statmt.org/europarl/). The official validation and test sets of Europarl are [WMT devtest2006 and testset2006](http://matrix.statmt.org/test_sets/list). The downloading script might be too complicated and we highly suggest that you could download manually.
+For downloading Europarl, please refer to its [official website and scripts](http://www.statmt.org/europarl/). The official validation and test sets of Europarl are [WMT dev2006 and devtest2006](http://matrix.statmt.org/test_sets/list). The downloading script is concatenated into the data pre-processing script of Europarl.
 
 ## Data Preprocessing
-For preprocess MultiUN corpus, please run the following shell scripts:
+For preprocessing MultiUN corpus, please run the following shell scripts:
 ```
 cd data;
 bash prepare-multiun.sh
+```
+
+For downloading and preprocessing EuroParl corpus, please run the followinng shell scripts:
+```
+cd data;
+bash prepare-europarl.sh
 ```
 
 ## Binalizing and Training with FairSeq
 For training multilingual NMT model with denoising autoencoder objective on MultiUN, please run the following shell scripts:
 ```
 bash train_multiun_mnmt_dn.sh
+```
+
+For training multilingual NMT model with denoising autoencoder objective on EuroParl, please run the following shell scripts:
+```
+bash train_europarl_mnmt_dn.sh
 ```
 
 ## Decoding and Testing
