@@ -102,12 +102,12 @@ for l in ar ru en; do
     cat $srcpath/testsets/devset/UNv1.0.devset.$l | \
         perl $NORM_PUNC $l | \
         perl $REM_NON_PRINT_CHAR | \
-        perl $TOKENIZER -threads 8 -a -l $LANG > $tmp/valid.$l
+        perl $TOKENIZER -threads 8 -a -l $l > $tmp/valid.$l
 
     cat $srcpath/testsets/testset/UNv1.0.testset.$l | \
         perl $NORM_PUNC $l | \
         perl $REM_NON_PRINT_CHAR | \
-        perl $TOKENIZER -threads 8 -a -l $LANG > $tmp/test.$l
+        perl $TOKENIZER -threads 8 -a -l $l > $tmp/test.$l
 
     python $BPEROOT/apply_bpe.py -c $BPE_CODE < $tmp/valid.$l > $tmp/valid.bpe.$l
     python $BPEROOT/apply_bpe.py -c $BPE_CODE < $tmp/test.$l > $tmp/test.bpe.$l
